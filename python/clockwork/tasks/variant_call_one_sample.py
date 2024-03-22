@@ -23,4 +23,5 @@ def run(options):
         debug=options.debug,
         keep_bam=options.keep_bam,
         trim_reads=not options.no_trim,
+        min_dp=options.min_dp
     )

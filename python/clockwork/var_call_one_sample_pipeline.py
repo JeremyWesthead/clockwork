@@ -28,6 +28,7 @@ def run(
     debug=False,
     keep_bam=False,
     trim_reads=True,
+    min_dp=5,
 ):
     if len(reads1_list) != len(reads2_list):
         raise Exception(
@@ -165,7 +166,7 @@ def run(
     )
     if not debug:
         os.unlink(samtools_gvcf)
-    gvcf.gvcf_to_fasta(final_gvcf, f"{final_gvcf}.fasta")
+    gvcf.gvcf_to_fasta(final_gvcf, f"{final_gvcf}.fasta", min_dp=min_dp)
 
     if not (keep_bam or debug):
         os.unlink(rmdup_bam)

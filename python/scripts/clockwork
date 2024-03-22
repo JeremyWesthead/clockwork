@@ -982,6 +982,13 @@ subparser_variant_call_one_sample.add_argument(
     nargs="+",
     help="List of forwards and reverse reads filenames (must provide an even number of files). For a single pair of files: reads_forward.fq reads_reverse.fq. For two pairs of files from the same sample: reads1_forward.fq reads1_reverse.fq reads2_forward.fq reads2_reverse.fq",
 )
+subparser_variant_call_one_sample.add_argument(
+    "--min_dp",
+    type=int,
+    help="Minimum total read depth. If depth is less than this, then N is added to the FASTA [%(default)s]",
+    default=5,
+    metavar="INT",
+)
 subparser_variant_call_one_sample.set_defaults(
     func=clockwork.tasks.variant_call_one_sample.run
 )
